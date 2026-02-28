@@ -967,9 +967,9 @@ wheels = [
 ]
 
 [[package]]
-name = "singleagent-benchmark"
+name = "singleagent-eval"
 version = "2.0.0"
-source = { virtual = "." }
+source = { editable = "." }
 dependencies = [
     { name = "anthropic" },
     { name = "markitdown", extra = ["pdf"] },
