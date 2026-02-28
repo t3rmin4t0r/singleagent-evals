@@ -1,0 +1,20 @@
+vendor,period,invoice_amount,qbo_amount,status,notes
+AWS,Jan 2025,987.45,312.50,Partial,$675.00 short in QBO
+AWS,Feb 2025,1262.32,350.00,Partial,$912.32 short in QBO
+AWS,Mar 2025,862.18,248.75,Partial,$613.43 short in QBO
+AWS,Apr 2025,750.00,750.00,Matched,Exact match
+Blue Shield of California,Jan 2025,1200.00,1200.00,Matched,Exact match
+Blue Shield of California,Feb 2025,1200.00,1200.00,Matched,Exact match
+Blue Shield of California,Mar 2025,1200.00,0.00,Unmatched,Invoice present but missing from QBO
+Comcast Business,Jan 2025,189.00,189.00,Matched,Exact match
+Comcast Business,Feb 2025,189.00,0.00,Unmatched,Invoice present but missing from QBO
+Comcast Business,Mar 2025,189.00,189.00,Matched,Exact match
+Google Cloud Platform,Jan 2025,312.50,987.45,Partial,$674.95 over in QBO
+Google Cloud Platform,Feb 2025,425.00,1262.32,Partial,$837.32 over in QBO
+Google Cloud Platform,Mar 2025,198.75,862.18,Partial,$663.43 over in QBO
+Salesforce,Jan 2025,500.00,500.00,Matched,Exact match
+Salesforce,Feb 2025,500.00,500.00,Matched,Exact match
+Salesforce,Mar 2025,500.00,500.00,Matched,Exact match
+Slack,Feb 2025,150.00,150.00,Matched,Exact match
+Slack,Mar 2025,150.00,150.00,Matched,Exact match
+Slack,Apr 2025,150.00,150.00,Matched,Exact match

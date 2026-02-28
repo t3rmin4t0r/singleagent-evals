@@ -1,0 +1,85 @@
+vendor,period,invoice_amount,qbo_amount,status,notes
+Blue Shield CA,Jan 2025,1200,1200,Matched,Adversarial test - matched
+Blue Shield CA,Feb 2025,1200,720.0,Partial,Adversarial test - partial
+Blue Shield CA,Mar 2025,1200,1200,Matched,Adversarial test - matched
+Blue Shield CA,Apr 2025,1200,0,Unmatched,Adversarial test - unmatched
+Blue Shield CA,May 2025,1200,1200,Matched,Adversarial test - matched
+Blue Shield CA,Jun 2025,1200,1200,Matched,Adversarial test - matched
+Blue Shield CA,Jul 2025,1200,1200,Matched,Adversarial test - matched
+Blue Shield CA,Aug 2025,1200,1210,Partial,Adversarial test - partial
+Blue Shield CA,Sep 2025,1200,1200,Matched,Adversarial test - matched
+Blue Shield CA,Oct 2025,1200,1200,Matched,Adversarial test - matched
+Blue Shield CA,Nov 2025,1200,1200,Matched,Adversarial test - matched
+Blue Shield CA,Dec 2025,1200,1200,Matched,Adversarial test - matched
+Comcast Bus,Jan 2025,189,189,Matched,Adversarial test - matched
+Comcast Bus,Feb 2025,189,113.39999999999999,Partial,Adversarial test - partial
+Comcast Bus,Mar 2025,189,189,Matched,Adversarial test - matched
+Comcast Bus,Apr 2025,189,189,Matched,Adversarial test - matched
+Comcast Bus,May 2025,189,113.39999999999999,Partial,Adversarial test - partial
+Comcast Bus,Jun 2025,189,189,Matched,Adversarial test - matched
+Comcast Bus,Jul 2025,189,189,Matched,Adversarial test - matched
+Comcast Bus,Aug 2025,189,189,Matched,Adversarial test - matched
+Comcast Bus,Sep 2025,189,189,Matched,Adversarial test - matched
+Comcast Bus,Oct 2025,189,113.39999999999999,Partial,Adversarial test - partial
+Comcast Bus,Nov 2025,189,113.39999999999999,Partial,Adversarial test - partial
+Comcast Bus,Dec 2025,189,189,Matched,Adversarial test - matched
+Google Cloud,Jan 2025,312.5,312.5,Matched,Adversarial test - matched
+Google Cloud,Feb 2025,425.0,425.0,Matched,Adversarial test - matched
+Google Cloud,Mar 2025,198.75,198.75,Matched,Adversarial test - matched
+Google Cloud,Apr 2025,350,350,Matched,Adversarial test - matched
+Google Cloud,May 2025,350,340,Partial,Adversarial test - partial
+Google Cloud,Jun 2025,350,350,Matched,Adversarial test - matched
+Google Cloud,Jul 2025,350,350,Matched,Adversarial test - matched
+Google Cloud,Aug 2025,350,350,Matched,Adversarial test - matched
+Google Cloud,Sep 2025,350,210.0,Partial,Adversarial test - partial
+Google Cloud,Oct 2025,350,700,Partial,Adversarial test - partial
+Google Cloud,Nov 2025,350,210.0,Partial,Adversarial test - partial
+Google Cloud,Dec 2025,350,400,Partial,Adversarial test - partial
+Amazon AWS,Jan 2025,987.45,987.45,Matched,Adversarial test - matched
+Amazon AWS,Feb 2025,1262.32,1262.32,Matched,Adversarial test - matched
+Amazon AWS,Mar 2025,862.18,862.18,Matched,Adversarial test - matched
+Amazon AWS,Apr 2025,1100,0,Unmatched,Adversarial test - unmatched
+Amazon AWS,May 2025,1100,1100,Matched,Adversarial test - matched
+Amazon AWS,Jun 2025,1100,1100,Matched,Adversarial test - matched
+Amazon AWS,Jul 2025,1100,1100,Matched,Adversarial test - matched
+Amazon AWS,Aug 2025,1100,1100,Matched,Adversarial test - matched
+Amazon AWS,Sep 2025,1100,1100,Matched,Adversarial test - matched
+Amazon AWS,Oct 2025,1100,0,Unmatched,Adversarial test - unmatched
+Amazon AWS,Nov 2025,1100,1100,Matched,Adversarial test - matched
+Amazon AWS,Dec 2025,1100,1100,Matched,Adversarial test - matched
+Slack Inc,Jan 2025,150,150,Matched,Adversarial test - matched
+Slack Inc,Feb 2025,150,150,Matched,Adversarial test - matched
+Slack Inc,Mar 2025,150,125,Partial,Adversarial test - partial
+Slack Inc,Apr 2025,150,90.0,Partial,Adversarial test - partial
+Slack Inc,May 2025,150,90.0,Partial,Adversarial test - partial
+Slack Inc,Jun 2025,150,0,Unmatched,Adversarial test - unmatched
+Slack Inc,Jul 2025,150,150,Matched,Adversarial test - matched
+Slack Inc,Aug 2025,150,100,Partial,Adversarial test - partial
+Slack Inc,Sep 2025,150,150,Matched,Adversarial test - matched
+Slack Inc,Oct 2025,150,150,Matched,Adversarial test - matched
+Slack Inc,Nov 2025,150,150,Matched,Adversarial test - matched
+Slack Inc,Dec 2025,150,150,Matched,Adversarial test - matched
+Salesforce Com,Jan 2025,500,500,Matched,Adversarial test - matched
+Salesforce Com,Feb 2025,500,510,Partial,Adversarial test - partial
+Salesforce Com,Mar 2025,500,300.0,Partial,Adversarial test - partial
+Salesforce Com,Apr 2025,500,500,Matched,Adversarial test - matched
+Salesforce Com,May 2025,500,500,Matched,Adversarial test - matched
+Salesforce Com,Jun 2025,500,500,Matched,Adversarial test - matched
+Salesforce Com,Jul 2025,500,500,Matched,Adversarial test - matched
+Salesforce Com,Aug 2025,500,300.0,Partial,Adversarial test - partial
+Salesforce Com,Sep 2025,500,1000,Partial,Adversarial test - partial
+Salesforce Com,Oct 2025,500,300.0,Partial,Adversarial test - partial
+Salesforce Com,Nov 2025,500,450,Partial,Adversarial test - partial
+Salesforce Com,Dec 2025,500,500,Matched,Adversarial test - matched
+Microsoft,Jan 2025,99.99,99.99,Matched,Adversarial test - matched
+Microsoft,Feb 2025,99.99,59.99399999999999,Partial,Adversarial test - partial
+Microsoft,Mar 2025,99.99,99.99,Matched,Adversarial test - matched
+Microsoft,Apr 2025,99.99,99.99,Matched,Adversarial test - matched
+Microsoft,May 2025,99.99,89.99,Partial,Adversarial test - partial
+Microsoft,Jun 2025,99.99,99.99,Matched,Adversarial test - matched
+Microsoft,Jul 2025,99.99,199.98,Partial,Adversarial test - partial
+Microsoft,Aug 2025,99.99,99.99,Matched,Adversarial test - matched
+Microsoft,Sep 2025,99.99,99.99,Matched,Adversarial test - matched
+Microsoft,Oct 2025,99.99,99.99,Matched,Adversarial test - matched
+Microsoft,Nov 2025,99.99,99.99,Matched,Adversarial test - matched
+Microsoft,Dec 2025,99.99,99.99,Matched,Adversarial test - matched

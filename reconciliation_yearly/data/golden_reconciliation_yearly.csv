@@ -1,0 +1,85 @@
+vendor,period,invoice_amount,qbo_amount,status,notes
+Blue Shield of California,Jan 2025,1200,1200,Matched,12-month dataset
+Blue Shield of California,Feb 2025,1200,1200,Matched,12-month dataset
+Blue Shield of California,Mar 2025,1200,1200,Matched,12-month dataset
+Blue Shield of California,Apr 2025,1200,1200,Matched,12-month dataset
+Blue Shield of California,May 2025,1200,1200,Matched,12-month dataset
+Blue Shield of California,Jun 2025,1200,1200,Matched,12-month dataset
+Blue Shield of California,Jul 2025,1200,1200,Matched,12-month dataset
+Blue Shield of California,Aug 2025,1200,1200,Matched,12-month dataset
+Blue Shield of California,Sep 2025,1200,1200,Matched,12-month dataset
+Blue Shield of California,Oct 2025,1200,1200,Matched,12-month dataset
+Blue Shield of California,Nov 2025,1200,1200,Matched,12-month dataset
+Blue Shield of California,Dec 2025,1200,1200,Matched,12-month dataset
+Comcast Business,Jan 2025,189,189,Matched,12-month dataset
+Comcast Business,Feb 2025,189,189,Matched,12-month dataset
+Comcast Business,Mar 2025,189,189,Matched,12-month dataset
+Comcast Business,Apr 2025,189,189,Matched,12-month dataset
+Comcast Business,May 2025,189,189,Matched,12-month dataset
+Comcast Business,Jun 2025,189,189,Matched,12-month dataset
+Comcast Business,Jul 2025,189,189,Matched,12-month dataset
+Comcast Business,Aug 2025,189,189,Matched,12-month dataset
+Comcast Business,Sep 2025,189,189,Matched,12-month dataset
+Comcast Business,Oct 2025,189,189,Matched,12-month dataset
+Comcast Business,Nov 2025,189,189,Matched,12-month dataset
+Comcast Business,Dec 2025,189,189,Matched,12-month dataset
+Google Cloud Platform,Jan 2025,312.5,312.5,Matched,12-month dataset
+Google Cloud Platform,Feb 2025,425.0,1262.32,Partial,Accidental swap: paid with AWS amount
+Google Cloud Platform,Mar 2025,198.75,198.75,Matched,12-month dataset
+Google Cloud Platform,Apr 2025,287.5,287.5,Matched,12-month dataset
+Google Cloud Platform,May 2025,356.25,356.25,Matched,12-month dataset
+Google Cloud Platform,Jun 2025,401.0,401.0,Matched,12-month dataset
+Google Cloud Platform,Jul 2025,325.0,325.0,Matched,12-month dataset
+Google Cloud Platform,Aug 2025,412.5,412.5,Matched,12-month dataset
+Google Cloud Platform,Sep 2025,298.75,298.75,Matched,12-month dataset
+Google Cloud Platform,Oct 2025,375.0,375.0,Matched,12-month dataset
+Google Cloud Platform,Nov 2025,410.0,410.0,Matched,12-month dataset
+Google Cloud Platform,Dec 2025,340.0,340.0,Matched,12-month dataset
+AWS,Jan 2025,987.45,987.45,Matched,12-month dataset
+AWS,Feb 2025,1262.32,425.0,Partial,Accidental swap: paid with GCP amount
+AWS,Mar 2025,862.18,862.18,Matched,12-month dataset
+AWS,Apr 2025,1050.0,1000.0,Partial,Diff: $50.00
+AWS,May 2025,945.75,945.75,Matched,12-month dataset
+AWS,Jun 2025,1100.25,1100.25,Matched,12-month dataset
+AWS,Jul 2025,1025.5,1025.5,Matched,12-month dataset
+AWS,Aug 2025,1175.0,1175.0,Matched,12-month dataset
+AWS,Sep 2025,1050.75,1050.75,Matched,12-month dataset
+AWS,Oct 2025,1225.0,1225.0,Matched,12-month dataset
+AWS,Nov 2025,1100.5,1100.5,Matched,12-month dataset
+AWS,Dec 2025,975.0,975.0,Matched,12-month dataset
+Salesforce,Jan 2025,500,500,Matched,12-month dataset
+Salesforce,Feb 2025,500,500,Matched,12-month dataset
+Salesforce,Mar 2025,500,500,Matched,12-month dataset
+Salesforce,Apr 2025,500,500,Matched,12-month dataset
+Salesforce,May 2025,500,500,Matched,12-month dataset
+Salesforce,Jun 2025,500,500,Matched,12-month dataset
+Salesforce,Jul 2025,500,500,Matched,12-month dataset
+Salesforce,Aug 2025,500,500,Matched,12-month dataset
+Salesforce,Sep 2025,500,500,Matched,12-month dataset
+Salesforce,Oct 2025,500,500,Matched,12-month dataset
+Salesforce,Nov 2025,500,500,Matched,12-month dataset
+Salesforce,Dec 2025,500,500,Matched,12-month dataset
+Slack,Jan 2025,150,0,Unmatched,Diff: $150.00
+Slack,Feb 2025,150,150,Matched,12-month dataset
+Slack,Mar 2025,150,150,Matched,12-month dataset
+Slack,Apr 2025,175,175,Matched,12-month dataset
+Slack,May 2025,175,175,Matched,12-month dataset
+Slack,Jun 2025,175,175,Matched,12-month dataset
+Slack,Jul 2025,175,175,Matched,12-month dataset
+Slack,Aug 2025,175,175,Matched,12-month dataset
+Slack,Sep 2025,175,175,Matched,12-month dataset
+Slack,Oct 2025,175,175,Matched,12-month dataset
+Slack,Nov 2025,175,175,Matched,12-month dataset
+Slack,Dec 2025,150,150,Matched,12-month dataset
+Microsoft 365,Jan 2025,99.99,99.99,Matched,12-month dataset
+Microsoft 365,Feb 2025,99.99,99.99,Matched,12-month dataset
+Microsoft 365,Mar 2025,99.99,99.99,Matched,12-month dataset
+Microsoft 365,Apr 2025,99.99,99.99,Matched,12-month dataset
+Microsoft 365,May 2025,99.99,99.99,Matched,12-month dataset
+Microsoft 365,Jun 2025,99.99,99.99,Matched,12-month dataset
+Microsoft 365,Jul 2025,99.99,99.99,Matched,12-month dataset
+Microsoft 365,Aug 2025,99.99,99.99,Matched,12-month dataset
+Microsoft 365,Sep 2025,99.99,99.99,Matched,12-month dataset
+Microsoft 365,Oct 2025,99.99,99.99,Matched,12-month dataset
+Microsoft 365,Nov 2025,99.99,99.99,Matched,12-month dataset
+Microsoft 365,Dec 2025,99.99,0,Unmatched,Diff: $99.99

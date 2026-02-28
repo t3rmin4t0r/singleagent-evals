@@ -1,0 +1,10 @@
+vendor,period,invoice_amount,qbo_amount,status,notes
+Comcast Business,Jan 2025,189.00,189.00,Matched,Exact match
+Comcast Business,Feb 2025,189.00,189.00,Matched,Exact match
+Comcast Business,Mar 2025,189.00,189.00,Matched,Exact match
+Google Cloud Platform,Jan 2025,312.50,312.50,Matched,Exact match
+Google Cloud Platform,Feb 2025,425.00,385.00,Partial,$40.00 short in QBO
+Google Cloud Platform,Mar 2025,198.75,198.75,Matched,Exact match
+Blue Shield of California,Jan 2025,1200.00,1200.00,Matched,Exact match
+Blue Shield of California,Feb 2025,1200.00,1200.00,Matched,Exact match
+Blue Shield of California,Mar 2025,1200.00,1200.00,Matched,Exact match

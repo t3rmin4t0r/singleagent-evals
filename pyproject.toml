@@ -1,0 +1,20 @@
+[project]
+name = "singleagent-benchmark"
+version = "2.0.0"
+description = "Single-agent benchmark framework for LLM tool-calling on domain-specific tasks"
+requires-python = ">=3.14"
+dependencies = [
+    "anthropic>=0.75",
+    "openai-agents>=0.0.10",
+    "pandas>=2.0",
+    "xlsxwriter>=3.0",
+    "openpyxl>=3.1",
+    "PyMuPDF>=1.24",
+    "numpy>=1.24",
+    "pyarrow>=14.0",
+    "python-dateutil>=2.8",
+    "markitdown[pdf]>=0.0.1a1",
+]
+
+[project.scripts]
+bench = "bench.cli:main"

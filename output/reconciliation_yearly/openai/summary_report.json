@@ -1,0 +1,227 @@
+{
+  "testcase": "reconciliation_yearly",
+  "provider": "openai",
+  "iterations": 5,
+  "runs": [
+    {
+      "provider": "openai",
+      "model": "gpt-5.1",
+      "run_id": "019ca273-70a2-759a-91a8-43895cce4900",
+      "testcase": "reconciliation_yearly",
+      "followup": true,
+      "total_tokens_in": 31043,
+      "total_tokens_out": 4430,
+      "total_tokens": 35473,
+      "total_tool_calls": 1,
+      "wall_time_seconds": 253.17891216278076,
+      "output_files": [
+        "/Users/gopal/isotopes/papers/singleagent-benchmark-v2/output/reconciliation_yearly/openai/20260227_201319/output/reconciliation_output.csv"
+      ],
+      "error": null,
+      "followup_response": "Confidence in this reconciliation: **98%**\n\nReasoning:\n\n1. **Data coverage and structure**\n   - QBO data you provided is a clean 7\u00d712 matrix (7 vendors \u00d7 12 months) with one total per vendor per month.\n   - Invoices you provided are fully structured and complete:\n     - 7 vendors\n     - 1 invoice per vendor per month\n     - Clear service period and a single \u201cAmount Due\u201d per invoice.\n   - All vendor names match exactly between invoices and QBO (no ambiguous name-matching required).\n\n2. **Direct one-to-one matches (very high confidence)**\n   For these vendor-months, the **invoice amount exactly equals the QBO amount**, and there\u2019s no ambiguity:\n   - **Blue Shield of California**: all months (Jan\u2013Dec) \u2013 exact matches.\n   - **Comcast Business**: all months \u2013 exact matches.\n   - **Salesforce**: all months \u2013 exact matches.\n   - **Google Cloud Platform**: all months **except Feb** \u2013 exact matches.\n   - **AWS**: all months **except Feb and Apr** \u2013 exact matches.\n   - **Slack**: all months **except Jan** \u2013 exact matches.\n   - **Microsoft 365**: all months **except Dec** \u2013 exact matches.\n\n   Confidence on all of these exact matches: **~100%**.\n\n3. **Unmatched items (high confidence in the fact they\u2019re missing in QBO)**\n   - **Slack \u2013 Jan 2025**  \n     - Invoice: $150.00  \n     - QBO: $0.00  \n     - No Slack entry for Jan in QBO row \u2192 strong evidence this is simply not recorded in QBO.\n   - **Microsoft 365 \u2013 Dec 2025**  \n     - Invoice: $99.99  \n     - QBO: $0.00  \n     - Microsoft 365 row shows $0 in Dec \u2192 likely missing QBO entry.\n\n   Confidence that these two are **true missing QBO postings**: **~99%**.  \n   The only residual uncertainty: QBO might have posted these under a *different* vendor name/account that is not present in the summary you gave me. With just this summary table, I can\u2019t see that.\n\n4. **Partial mismatches / mis-postings (high but not absolute confidence)**\n   These are correctly flagged as *partial* by the tool; my interpretation is where some uncertainty lives.\n\n   a) **AWS \u2013 Feb 2025**\n   - Invoice: **$1,262.32**  \n   - QBO: **$412.50** (AWS row, Feb)  \n   \u2192 Tool: Partial, **$849.82 short in QBO**\n\n   b) **Google Cloud Platform \u2013 Feb 2025**\n   - Invoice: **$425.00**  \n   - QBO: **$1,262.32** (GCP row, Feb)  \n   \u2192 Tool: Partial, **$837.32 over in QBO**\n\n   Observations:\n   - The **total** of February invoices for AWS + GCP = 1,262.32 + 425.00 = **1,687.32**.\n   - The **total** of QBO February amounts for AWS + GCP = 412.50 + 1,262.32 = **1,674.82**.\n   - Difference = **$12.50** short in QBO across those two combined.\n\n   Interpretation with high but not perfect confidence:\n   - QBO appears to have:\n     - Under-recorded AWS by $849.82.\n     - Over-recorded GCP by $837.32.\n   - That pattern is *suggestive* of a misallocation/mis-coding between AWS and GCP, but not a clean swap due to the extra $12.50 net difference.\n\n   Confidence in the numerical classification (partial and the dollar variances): **100%**.  \n   Confidence in the **cause** (misposting between AWS and GCP vs other explanations): **~85\u201390%**.\n\n   c) **AWS \u2013 Apr 2025**\n   - Invoice: **$1,050.00**  \n   - QBO: **$1,000.00** (AWS row, Apr)  \n   \u2192 Tool: Partial, **$50.00 short in QBO**.\n   \n   This is a clean, straightforward shortfall. Only small uncertainty is *why* (e.g., credit, tax treatment, timing), not *that* there is a $50 variance.\n\n   Confidence in the variance itself: **~100%**.  \n   Confidence in the \u201creason\u201d behind it: lower, since QBO detail-level data wasn\u2019t provided.\n\n5. **Main areas of uncertainty**\n   - **Attribution of errors vs cause:**\n     - I can confidently say \u201cQBO and invoices differ by $X in month Y for vendor Z,\u201d but:\n       - I *cannot* definitively say whether the discrepancy is due to:\n         - A pure posting error,\n         - A legitimate credit, discount, or partial payment,\n         - A timing issue (e.g., posted in a different month),\n         - A reclassification to another account or vendor.\n   - **Possible off-setting entries outside this summary:**\n     - The QBO snapshot you shared is a vendor-by-month summary. If there are:\n       - Refunds, credits, or reallocations posted under other vendor names or GL accounts,\n       - Manual journal entries,\n     those wouldn\u2019t show here. So I might be missing context that explains some differences (especially the Feb AWS/GCP net $12.50 shortfall).\n\n6. Why I chose **98%** overall\n   - **Amounts, vendor mapping, months, and statuses (matched/partial/unmatched)** are based on straightforward arithmetic and exact string matches and are almost certainly correct.\n   - The **remaining ~2% uncertainty** is:\n     - That there might be QBO postings not visible in the provided table (e.g., misclassified vendors/accounts).\n     - That the narrative explanations (e.g., \u201cmisallocated between AWS and GCP\u201d) cannot be proven from this summary alone, only strongly suggested.\n\nIf you\u2019d like, the next useful step would be:\n- Pulling the **detailed QBO transaction report** for Feb and Apr 2025 (for AWS & GCP, plus any \u201cmiscellaneous\u201d or IT-related vendors) to confirm whether those amounts were misposted or split across accounts.",
+      "followup_comparison": {
+        "match": "100%",
+        "pct": 100,
+        "explanation": "All output files identical."
+      },
+      "verification": {
+        "structural": {
+          "csv_exists": true
+        },
+        "numerical": {
+          "output_rows": 84,
+          "golden_rows": 84,
+          "rows_matched": 83,
+          "rows_total": 84,
+          "mismatches": [
+            "AWS Feb 2025: qbo_amount: got 412.5, expected 425.0"
+          ]
+        },
+        "passed": false,
+        "score": "FAIL (83/84 rows)",
+        "reason": [
+          "AWS Feb 2025: qbo_amount: got 412.5, expected 425.0"
+        ]
+      },
+      "confidence": 98.0,
+      "quadrant": "VERY BAD",
+      "run_dir": "/Users/gopal/isotopes/papers/singleagent-benchmark-v2/output/reconciliation_yearly/openai/20260227_201319"
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.1",
+      "run_id": "019ca277-4dfe-70b8-bb73-6b29a2d5d721",
+      "testcase": "reconciliation_yearly",
+      "followup": true,
+      "total_tokens_in": 32330,
+      "total_tokens_out": 5177,
+      "total_tokens": 37507,
+      "total_tool_calls": 1,
+      "wall_time_seconds": 272.653605222702,
+      "output_files": [
+        "/Users/gopal/isotopes/papers/singleagent-benchmark-v2/output/reconciliation_yearly/openai/20260227_201733/output/reconciliation_output.csv"
+      ],
+      "error": null,
+      "followup_response": "I would rate my confidence at **98\u2013100%** for this particular reconciliation.\n\nHere\u2019s why the confidence is high, and where the (small) uncertainties lie:\n\n1. Why confidence is very high\n- **Complete, clean dataset:**  \n  - QBO file is a simple matrix: 7 vendors \u00d7 12 months with clear labels.  \n  - You provided parsed text for every invoice for all 12 months and all 7 vendors.\n- **Direct 1:1 mapping:**  \n  - Vendor names in invoices and QBO match exactly:  \n    Blue Shield of California, Comcast Business, Google Cloud Platform, AWS, Salesforce, Slack, Microsoft 365.  \n  - No alias/abbreviation issues (e.g., no \u201cAmazon Web Services\u201d vs \u201cAWS\u201d ambiguity).\n- **Aligned periods:**  \n  - Each invoice shows service period entirely within a single calendar month (1st\u201328th of that month).  \n  - QBO columns are clearly monthly (Jan\u2013Dec 2025).  \n  - There is no proration or split-month complexity.\n- **Numeric alignment:**  \n  - For 79 out of 84 lines, the invoice amount and the QBO amount are **identical to the cent**.  \n  - The 5 non-exact cases are clearly and explicitly different in your source data:\n    - Slack Jan (invoice 150.00 vs QBO 0.00)  \n    - GCP Feb (invoice 425.00 vs QBO 1,262.32)  \n    - AWS Feb (invoice 1,262.32 vs QBO 412.50)  \n    - AWS Apr (invoice 1,050.00 vs QBO 1,000.00)  \n    - Microsoft 365 Dec (invoice 99.99 vs QBO 0.00)  \n  - The totals the tool computed (total invoiced, total in QBO, and the $312.49 difference) are consistent with these item-level differences.\n\nGiven all of that, I\u2019m effectively at **~100% confidence** that:\n- The vendor mapping is correct.\n- The period mapping (which invoice goes to which month) is correct.\n- The invoice_amount and qbo_amount pairs in the saved reconciliation reflect your inputs accurately.\n- The classification of **Matched / Partial / Unmatched** makes sense per the data.\n\n2. Areas of residual uncertainty (small but worth noting)\nThese aren\u2019t about the mechanics of what I did, but about the underlying accounting interpretation:\n\n1) **Mispostings between AWS and GCP in February**\n   - Fact:  \n     - GCP Feb: Invoice 425.00 vs QBO 1,262.32 (QBO higher by 837.32).  \n     - AWS Feb: Invoice 1,262.32 vs QBO 412.50 (QBO lower by 849.82).  \n   - It strongly suggests:\n     - Some AWS charges may be coded to GCP in QBO, or  \n     - Some GCP charges aggregated differently in QBO (e.g., multiple invoices, credits, or adjustments).  \n   - Without seeing the underlying QBO transaction detail (individual bills/charges), I can only flag these as **partial matches**, not definitively state the exact source of misclassification.\n\n2) **AWS April $50 difference**\n   - Fact: Invoice 1,050.00 vs QBO 1,000.00 (QBO short by 50.00).  \n   - Possible explanations:\n     - A fee or overage on the invoice not entered in QBO.  \n     - A partial application of a credit or adjustment in QBO.  \n   - I\u2019ve correctly identified it as **partial**, but I can\u2019t say *why* that $50 is missing without more context.\n\n3) **Slack Jan and Microsoft 365 Dec missing in QBO**\n   - Fact:  \n     - Slack Jan: Invoice 150.00; QBO 0.00.  \n     - Microsoft 365 Dec: Invoice 99.99; QBO 0.00.  \n   - Most likely explanation:\n     - Invoices not recorded in QBO at all, or recorded under the wrong vendor or account.  \n   - Again, I can\u2019t confirm whether they exist under another GL account or vendor name in your full QBO ledger; with the data given, treating them as **Unmatched** is correct.\n\n4) **Real-world nuance not visible here**\n   - Your prompt notes possible credits, refunds, split line items, or mis-timed postings.  \n   - In this dataset, none of that is directly visible\u2014what we have is already summarized by vendor and month.  \n   - If there *were* timing differences (e.g., Feb invoice posted in Mar), we wouldn\u2019t see that from just this summary; we\u2019d need transaction-level QBO exports. Right now, all the numbers align month-by-month except the clearly identified exceptions.\n\n3. Summary\n- **Confidence score:** **98\u2013100%** in the reconciliation as performed and saved.  \n- **Mechanically**, the reconciliation is precise: every invoice is matched to the correct vendor and month, with correct amounts, and discrepancies are correctly labeled.\n- **Substantive uncertainty** is limited to:\n  - The exact *cause* of the Feb AWS/GCP and Apr AWS differences.\n  - Whether the two \u201cmissing\u201d invoices (Slack Jan, Microsoft 365 Dec) might exist elsewhere in QBO under different coding.\n\nIf you can export the detailed QBO transaction listing by vendor for 2025, I can drill further and attempt to explain those discrepancies, not just flag them.",
+      "followup_comparison": {
+        "match": "100%",
+        "pct": 100,
+        "explanation": "All output files identical."
+      },
+      "verification": {
+        "structural": {
+          "csv_exists": true
+        },
+        "numerical": {
+          "output_rows": 84,
+          "golden_rows": 84,
+          "rows_matched": 83,
+          "rows_total": 84,
+          "mismatches": [
+            "AWS Feb 2025: qbo_amount: got 412.5, expected 425.0"
+          ]
+        },
+        "passed": false,
+        "score": "FAIL (83/84 rows)",
+        "reason": [
+          "AWS Feb 2025: qbo_amount: got 412.5, expected 425.0"
+        ]
+      },
+      "confidence": 100.0,
+      "quadrant": "VERY BAD",
+      "run_dir": "/Users/gopal/isotopes/papers/singleagent-benchmark-v2/output/reconciliation_yearly/openai/20260227_201733"
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.1",
+      "run_id": "019ca27b-7762-7379-bfe9-1807060dac1d",
+      "testcase": "reconciliation_yearly",
+      "followup": true,
+      "total_tokens_in": 31020,
+      "total_tokens_out": 4075,
+      "total_tokens": 35095,
+      "total_tool_calls": 1,
+      "wall_time_seconds": 319.46591305732727,
+      "output_files": [
+        "/Users/gopal/isotopes/papers/singleagent-benchmark-v2/output/reconciliation_yearly/openai/20260227_202206/output/reconciliation_output.csv"
+      ],
+      "error": null,
+      "followup_response": "Confidence: **~98%**\n\nReasoning:\n\n- The QBO expense report you provided is a clean vendor-by-month matrix for 2025 with the same seven vendors that appear on the invoices.\n- For 82 of the 84 invoice lines, the invoice amounts match the QBO amounts exactly by vendor and month:\n  - Blue Shield of California\n  - Comcast Business\n  - Google Cloud Platform\n  - AWS\n  - Salesforce\n  - Slack\n  - Microsoft 365  \n  across all months, except where flagged as partial or unmatched.\n- The values I used for QBO amounts come directly from the table you pasted; invoice amounts come directly from the parsed PDFs. There\u2019s a one-to-one mapping from invoice vendor to QBO vendor name in this dataset (no ambiguous abbreviations or multiple possible mappings).\n\nAreas of uncertainty / judgment calls:\n\n1. **Slack \u2013 Jan 2025 (Unmatched)**\n   - Invoice: $150.00  \n   - QBO for Slack in Jan: $0.00  \n   - I treated this as **Unmatched**.  \n   - Possible real-world explanations:\n     - Expense was posted to a different vendor or account in QBO.\n     - Timing issue (e.g., Dec 2024 or Feb 2025 entry) not visible in this single-year summary.\n   - Confidence on classification as \u201cno matching QBO entry in Jan 2025 for Slack\u201d: **~99%** (based on the table you gave).  \n   - Slight uncertainty (~1%) that QBO might have the cost under another vendor name or account not shown here.\n\n2. **Microsoft 365 \u2013 Dec 2025 (Unmatched)**\n   - Invoice: $99.99  \n   - QBO for Microsoft 365 in Dec: shown as 0.0 in your table.  \n   - Marked as **Unmatched** for the same reasons as above.  \n   - Confidence for \u201cno Dec 2025 Microsoft 365 expense in the provided QBO data\u201d: **~99%**.  \n   - Same small uncertainty that it might be misclassified elsewhere in QBO outside this summary.\n\n3. **AWS & Google Cloud Platform \u2013 Feb 2025 (Partial/misallocation)**\n   - QBO:\n     - Google Cloud Platform: **$1,262.32**\n     - AWS: **$412.50**\n   - Invoices:\n     - Google Cloud Platform: **$425.00**\n     - AWS: **$1,262.32**\n   - I flagged both as **Partial**:\n     - GCP: QBO $1,262.32 vs invoice $425.00 \u2192 $837.32 over in QBO.\n     - AWS: QBO $412.50 vs invoice $1,262.32 \u2192 $849.82 short in QBO.\n   - This strongly suggests a **vendor misallocation** in QBO (amounts swapped or combined improperly).\n   - Confidence the numeric comparisons are correct: **~99%**.  \n   - Uncertainty (~5\u201310%) on the *interpretation*:\n     - Could be multiple invoices or credits not visible in the data you provided (e.g., a credit memo, usage adjustment).\n     - QBO might have combined multiple periods in that month.\n\n4. **AWS \u2013 Apr 2025 (Partial)**\n   - Invoice: $1,050.00  \n   - QBO: $1,000.00  \n   - Marked as **Partial**, $50.00 short in QBO.\n   - Confidence in the arithmetic: **100%**.  \n   - Uncertainty (~5\u201310%) on real-world cause (credit, allocation to another project/account, tax/FX effects, or timing).\n\n5. **Structural limitations**\n   - I only see:\n     - One QBO summary sheet (vendor by month).\n     - One invoice per vendor per month for 2025.  \n   - If, in your actual books, there are:\n     - Additional line items,\n     - Credits,\n     - Reclasses between vendors or accounts,\n     - Or off-cycle invoices not in this set,  \n     those could explain some \u201cpartial\u201d or \u201cunmatched\u201d statuses in ways that aren\u2019t visible from the data provided.\n\nPutting that together:\n\n- **Numeric reconciliation (invoice vs QBO by vendor & month)** based on the data you provided: **~99% confidence**.\n- **Interpretation of why the discrepancies exist (misposting vs timing vs credits)**: **~85\u201390% confidence**, since I don\u2019t see underlying ledger detail, only summary.\n\nIf you share:\n- The underlying QBO transaction detail report for 2025 (per vendor, with dates and memo fields), or  \n- Any known credits/adjustments for AWS, GCP, Slack, or Microsoft 365,  \n\nI can narrow down the root causes of the partial/unmatched items and refine those interpretations further.",
+      "followup_comparison": {
+        "match": "100%",
+        "pct": 100,
+        "explanation": "All output files identical."
+      },
+      "verification": {
+        "structural": {
+          "csv_exists": true
+        },
+        "numerical": {
+          "output_rows": 84,
+          "golden_rows": 84,
+          "rows_matched": 83,
+          "rows_total": 84,
+          "mismatches": [
+            "AWS Feb 2025: qbo_amount: got 412.5, expected 425.0"
+          ]
+        },
+        "passed": false,
+        "score": "FAIL (83/84 rows)",
+        "reason": [
+          "AWS Feb 2025: qbo_amount: got 412.5, expected 425.0"
+        ]
+      },
+      "confidence": 98.0,
+      "quadrant": "VERY BAD",
+      "run_dir": "/Users/gopal/isotopes/papers/singleagent-benchmark-v2/output/reconciliation_yearly/openai/20260227_202206"
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.1",
+      "run_id": "019ca280-57b7-72b9-bc77-1cdf4711ab22",
+      "testcase": "reconciliation_yearly",
+      "followup": true,
+      "total_tokens_in": 33894,
+      "total_tokens_out": 6419,
+      "total_tokens": 40313,
+      "total_tool_calls": 1,
+      "wall_time_seconds": 337.7291281223297,
+      "output_files": [
+        "/Users/gopal/isotopes/papers/singleagent-benchmark-v2/output/reconciliation_yearly/openai/20260227_202725/output/reconciliation_output.csv"
+      ],
+      "error": null,
+      "followup_response": "Confidence: **97%**\n\nHere\u2019s how I\u2019d break that down and where the remaining uncertainty lies.\n\n---\n\n### 1. Areas where confidence is very high (\u2248100%)\n\n**a. Data extraction and mapping**\n\n- QBO vendor summary: You provided a clean table with 7 vendors and monthly amounts for **Jan\u2013Dec 2025**.  \n- Invoices: You provided explicit, well-structured parsed text for **84 invoices**:\n  - Vendor name (matches QBO names exactly)\n  - Invoice date (always 1st of the month)\n  - Service period (\u201c[Month] 1\u201328, 2025\u201d)\n  - Amount due\n\nGiven that:\n\n- Vendor names line up exactly with QBO.  \n- The number of invoices (84 = 7 vendors \u00d7 12 months) matches expectations.  \n- Service periods align clearly to calendar months.\n\nI\u2019m effectively **100% confident** that:\n- Each invoice was assigned to the correct **vendor** and **month**.  \n- The amounts I used from both invoices and QBO are what you supplied.\n\n**b. Exact matches**\n\nAnywhere the invoice amount equals the QBO amount for the same vendor and month, the classification as \u201cMatched \u2013 Exact match\u201d is straightforward arithmetic.\n\nThat\u2019s true for:\n\n- All months for Blue Shield, Comcast, Salesforce.  \n- All months for Slack except Jan.  \n- All months for Microsoft 365 except Dec.  \n- Most months for AWS and Google Cloud Platform, except the ones explicitly called out as discrepancies.\n\nConfidence on these \u201cMatched\u201d lines: **essentially 100%**.\n\n---\n\n### 2. Known discrepancies and confidence in them\n\nFor each discrepancy, I\u2019m confident in **the fact of the discrepancy**, though not necessarily in the **real-world cause** (which depends on QBO postings/credits you didn\u2019t show).\n\n#### 2.1 Slack \u2013 Jan 2025 (Unmatched)\n\n- Invoice: **$150.00**  \n- QBO: **$0.00**  \n\nI\u2019m **>99% confident** this is correctly classified as Unmatched, because:\n\n- QBO Slack row has Jan 2025 = 0.0 in your table.  \n- There is a Slack invoice for that month for 150.00.  \n- No other Slack/Jan entry exists.\n\nUncertainty: There might be an offsetting credit or a mis-coded transaction in QBO under a different vendor/account that I can\u2019t see.\n\n#### 2.2 Microsoft 365 \u2013 Dec 2025 (Unmatched)\n\n- Invoice: **$99.99**  \n- QBO: **$0.00**  \n\nSame reasoning as Slack Jan: QBO Dec value is 0, invoice is 99.99. Very likely a missing or misclassified expense.\n\nConfidence this is truly a mismatch in the data you supplied: **>99%**.\n\nReal-world uncertainty: It could have been expensed in Jan 2026, or coded to another vendor, which I can\u2019t verify from what I have.\n\n#### 2.3 AWS & Google Cloud Platform \u2013 Feb 2025 (Partial, misallocated)\n\n- GCP invoice: **$425.00** vs QBO **$1,262.32** \u2192 \u201cover in QBO by 837.32\u201d  \n- AWS invoice: **$1,262.32** vs QBO **$412.50** \u2192 \u201cshort in QBO by 849.82\u201d\n\nI\u2019m **>99% confident** those numbers and adjustments are computed correctly:\n\n- The QBO February row for GCP is 1,262.32 and AWS is 412.50 (per your table).  \n- The invoices show 425.00 for GCP and 1,262.32 for AWS.  \n- Combined invoice total vs combined QBO total yields a small net difference (~$12.50).\n\nUncertainty is not about the math; it\u2019s about **interpretation**:\n\n- It strongly suggests a vendor misallocation in QBO (amounts for AWS and GCP swapped or split incorrectly).  \n- I cannot confirm from the provided data whether:\n  - part of AWS was intentionally reclassified to GCP, or  \n  - there were credits, taxes, or multi-currency effects.\n\nSo: **very high confidence in the discrepancy and its size**, lower confidence in the exact real-world explanation.\n\n#### 2.4 AWS \u2013 Apr 2025 (Partial)\n\n- Invoice: **$1,050.00**  \n- QBO: **$1,000.00**  \n\nI\u2019m **>99% confident** the $50 shortfall is correctly identified:\n\n- QBO\u2019s Apr AWS value is 1000.00 in your table.  \n- AWS April invoice clearly says 1,050.00.\n\nUncertainty: whether the missing $50 in QBO is:\n\n- An unposted line item,  \n- An applied credit or discount that isn\u2019t visible in the invoice snapshot, or  \n- A data entry error.\n\n---\n\n### 3. Aggregate totals and remaining small uncertainties\n\nThe tool\u2019s summary:\n\n- Total invoiced: **$42,769.83**  \n- Total in QBO: **$42,457.34**  \n- Difference: **$312.49**\n\nThis difference decomposes cleanly into the four issues called out, which supports internal consistency. I\u2019m **very confident** the totals and decomposition are correct.\n\nRemaining uncertainty (the ~3%):\n\n1. **QBO context**:  \n   I only see the aggregate vendor-by-month table, not the detailed journal/expense transactions.\n   - If QBO has reclasses across months or vendors, those won\u2019t show up here.\n   - Refunds, credits, or multi-currency adjustments could explain some differences that look like \u201cshort\u201d or \u201cover\u201d to me.\n\n2. **Hidden business rules**:  \n   - If, in your process, certain months are intentionally accrued differently (e.g., an invoice for Jan expensed in Feb), I can\u2019t see that policy, only the numeric outcome.\n\n3. **Parsing/rounding**:  \n   The amounts were straightforward, but any unseen rounding or tax-handling rules inside QBO could create penny-level differences. Here, the variances are larger than pennies, so this is a small concern.\n\n---\n\n### 4. Bottom line\n\n- **Confidence in the mechanical reconciliation (vendor, period, invoice vs QBO, math, statuses): ~97\u2013100%.**  \n- **Confidence in diagnosing *why* QBO differs (misposting vs credits vs timing): ~70\u201380%,** because that requires internal QBO detail I don\u2019t have.\n\nIf you\u2019d like, you could export the February and April AWS/GCP/Microsoft/Slack detailed transaction reports from QBO, and I can re-check them against these invoices to either raise that confidence closer to 100% or pinpoint exactly which entries are misposted.",
+      "followup_comparison": {
+        "match": "100%",
+        "pct": 100,
+        "explanation": "All output files identical."
+      },
+      "verification": {
+        "structural": {
+          "csv_exists": true
+        },
+        "numerical": {
+          "output_rows": 84,
+          "golden_rows": 84,
+          "rows_matched": 83,
+          "rows_total": 84,
+          "mismatches": [
+            "AWS Feb 2025: qbo_amount: got 412.5, expected 425.0"
+          ]
+        },
+        "passed": false,
+        "score": "FAIL (83/84 rows)",
+        "reason": [
+          "AWS Feb 2025: qbo_amount: got 412.5, expected 425.0"
+        ]
+      },
+      "confidence": 97.0,
+      "quadrant": "VERY BAD",
+      "run_dir": "/Users/gopal/isotopes/papers/singleagent-benchmark-v2/output/reconciliation_yearly/openai/20260227_202725"
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.1",
+      "run_id": "019ca285-7f5f-7055-bfc1-e918f3905d74",
+      "testcase": "reconciliation_yearly",
+      "followup": true,
+      "total_tokens_in": 31154,
+      "total_tokens_out": 4243,
+      "total_tokens": 35397,
+      "total_tool_calls": 1,
+      "wall_time_seconds": 232.6086401939392,
+      "output_files": [
+        "/Users/gopal/isotopes/papers/singleagent-benchmark-v2/output/reconciliation_yearly/openai/20260227_203303/output/reconciliation_output.csv"
+      ],
+      "error": null,
+      "followup_response": "Confidence in the reconciliation: **98%**\n\nReasoning:\n\n- The dataset is small, structured, and internally consistent:\n  - QBO summary is a simple vendor-by-month table for 2025 (Jan\u2013Dec).\n  - Invoices are clearly labeled with vendor, month (via date/service period), and amount due.\n- For **most vendor-month combinations**, the invoice amounts **exactly match** the QBO numbers, confirming the mapping and logic.\n- Vendor names match directly between invoices and QBO (no fuzzy mapping required).\n\nBecause of that, the line-by-line matches and discrepancies are very clear and mechanical. That\u2019s why my confidence is high (98%), not lower.\n\n---\n\n### Areas of uncertainty / judgment calls\n\nThese are not \u201cdata errors\u201d but typical real-world reconciliation questions where multiple explanations are possible.\n\n1. **Slack \u2013 Jan 2025 (Unmatched in QBO)**\n   - Invoice: \\$150.00  \n   - QBO: \\$0.00  \n   - Confidence that this *specific comparison* is correct: **99%**  \n   - Uncertainty is about *why* it\u2019s missing:\n     - Could be posted under a different vendor name or GL account.\n     - Could be expensed in a different month.\n     - Could simply be missing from QBO.\n   - Without detailed QBO transaction-level data, I can\u2019t determine the cause, only that the Jan Slack invoice is not reflected in the Jan Slack QBO line.\n\n2. **Microsoft 365 \u2013 Dec 2025 (Unmatched in QBO)**\n   - Invoice: \\$99.99  \n   - QBO: \\$0.00  \n   - Confidence in the comparison: **99%**  \n   - Same type of uncertainty as above (mis-timed, mis-coded, or missing entry in QBO).\n\n3. **Google Cloud Platform \u2013 Feb 2025 (Partial)**\n   - Invoice: \\$425.00  \n   - QBO: \\$1,262.32  \n   - Difference: QBO **over** invoices by \\$837.32  \n   - Confidence that the numbers are correctly read and compared: **99%**  \n   - Uncertainty: interpretation of the excess in QBO:\n     - Additional GCP invoice(s) not included in your provided set.\n     - Credits/adjustments or prior-period true-ups rolled into Feb in QBO.\n     - Misclassification of another vendor\u2019s charges as GCP.\n   - I cannot resolve which of these is true without transaction-level QBO export and all relevant GCP billing documents.\n\n4. **AWS \u2013 Feb 2025 (Partial)**\n   - Invoice: \\$1,262.32  \n   - QBO: \\$412.50  \n   - Difference: QBO **short** by \\$849.82  \n   - Confidence in the raw comparison: **99%**  \n   - Uncertainty:\n     - Part of the invoice may be posted in another month.\n     - Portions may be split across different accounts or alternative vendor names.\n     - Or part of the invoice may be missing from QBO.\n\n5. **AWS \u2013 Apr 2025 (Partial)**\n   - Invoice: \\$1,050.00  \n   - QBO: \\$1,000.00  \n   - Difference: QBO **short** by \\$50.00  \n   - Confidence in comparison: **99%**  \n   - Uncertainty: whether that \\$50 is:\n     - Posted elsewhere (different period or account),\n     - A legitimate exclusion (e.g., non-expensed charge),\n     - Or simply an under-recording.\n\n---\n\n### Why not 100%?\n\nTwo main reasons keep me from 100%:\n\n1. **Source limitations**  \n   I only see:\n   - One high-level QBO summary by vendor and month, not the detailed QBO ledger or transactions.\n   - A clean, single invoice per vendor per month. In reality, there could be:\n     - Multiple invoices per month per vendor.\n     - Credits, refunds, or reclasses not visible in this dataset.\n\n   So while the *math* and *matching* on the data you provided is solid, I can\u2019t guarantee that there are no relevant QBO entries or invoices outside what I see.\n\n2. **Real-world accounting nuances**  \n   Some differences could be:\n   - Timing differences (invoice in Jan, recorded in Feb).\n   - Allocation differences (part of a bill reclassified to another vendor or cost center).\n   - Rounding or FX impacts (not present here, but common in practice).\n\nThose factors affect the **interpretation** of discrepancies, not the correctness of the comparisons I\u2019ve made.\n\n---\n\nIf you\u2019d like to increase assurance, the next checks I\u2019d recommend are:\n\n- Pull **transaction-level QBO expense detail** for these vendors and spot-check:\n  - Feb AWS and GCP,\n  - Jan Slack,\n  - Dec Microsoft 365.\n- Confirm that there are no **additional invoices** for those months beyond the ones provided.  \n\nWithin the scope of the data you supplied, the reconciliation itself is very reliable\u2014hence the **98%** confidence rating.",
+      "followup_comparison": {
+        "match": "100%",
+        "pct": 100,
+        "explanation": "All output files identical."
+      },
+      "verification": {
+        "structural": {
+          "csv_exists": true
+        },
+        "numerical": {
+          "output_rows": 84,
+          "golden_rows": 84,
+          "rows_matched": 83,
+          "rows_total": 84,
+          "mismatches": [
+            "AWS Feb 2025: qbo_amount: got 412.5, expected 425.0"
+          ]
+        },
+        "passed": false,
+        "score": "FAIL (83/84 rows)",
+        "reason": [
+          "AWS Feb 2025: qbo_amount: got 412.5, expected 425.0"
+        ]
+      },
+      "confidence": 98.0,
+      "quadrant": "VERY BAD",
+      "run_dir": "/Users/gopal/isotopes/papers/singleagent-benchmark-v2/output/reconciliation_yearly/openai/20260227_203303"
+    }
+  ]
+}
