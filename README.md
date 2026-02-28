@@ -96,7 +96,3 @@ export OPENAI_API_KEY="your-key"
 --output-root     Output directory (default: output)
 --list            List available test cases
 ```
-
-## License
-
-MIT
