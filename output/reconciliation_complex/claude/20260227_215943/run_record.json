@@ -1,0 +1,35 @@
+{
+  "provider": "claude",
+  "model": "claude-sonnet-4-5-20250929",
+  "run_id": "019ca2d4-d9a3-709d-b63e-23f0a24eece9",
+  "testcase": "reconciliation_complex",
+  "followup": false,
+  "total_tokens_in": 72222,
+  "total_tokens_out": 1921,
+  "total_tokens": 74143,
+  "total_tool_calls": 1,
+  "wall_time_seconds": 46.98106598854065,
+  "output_files": [
+    "/Users/gopal/isotopes/papers/singleagent-evals/output/reconciliation_complex/claude/20260227_215943/output/reconciliation_output.csv"
+  ],
+  "error": null,
+  "followup_response": "",
+  "followup_comparison": null,
+  "verification": {
+    "structural": {
+      "csv_exists": true
+    },
+    "numerical": {
+      "output_rows": 21,
+      "golden_rows": 19,
+      "rows_matched": 19,
+      "rows_total": 19,
+      "mismatches": []
+    },
+    "passed": true,
+    "score": "PASS"
+  },
+  "confidence": null,
+  "quadrant": "NO_FOLLOWUP",
+  "run_dir": "/Users/gopal/isotopes/papers/singleagent-evals/output/reconciliation_complex/claude/20260227_215943"
+}
